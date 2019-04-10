@@ -49,21 +49,22 @@ class AboutSection(models.Model):
 class Contact(models.Model):
     icon = models.CharField(max_length=255)
     title = models.CharField(max_length=255)
-    picture = models.TextField()
+    text = models.TextField()
 
     def __str__(self):
         return "{}".format(self.title)
 
 class FooterIcon(models.Model):
     link = models.CharField(max_length=255)
-    name = models.CharField(max_length=255)
+    name = models.CharField("icon",max_length=255)
 
     def __str__(self):
         return "{}".format(self.name)
 
 class Subscription(models.Model):
-    email = models.EmailField
+    email = models.EmailField(null=True, blank=True)
     date = models.DateField(auto_now_add=True)
+    # background_image = models.ImageField(upload_to="Subscription/")
 
     def __str__(self):
         return "{}".format(self.email)
